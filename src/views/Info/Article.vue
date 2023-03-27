@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { reactive, ref } from '@vue/runtime-core'
+import { reactive } from '@vue/runtime-core'
 import card from '@/base-ui/card'
 import service from '@/service'
 export default {
@@ -15,18 +15,11 @@ export default {
 		let articleList = reactive([])
 
 		service.get('/record/getArticles/' + 1).then(function (response) {
-			console.log(response)
 			articleList.list = response.data.reverse()
 		})
-		const changeValue = (id, item) => {
-			console.log(id, item)
-		}
-		const checked1 = ref(true)
+
 		return {
-			articleList,
-			ellipsis: ref(true),
-			checked1,
-			changeValue
+			articleList
 		}
 	}
 }

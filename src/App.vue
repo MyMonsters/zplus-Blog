@@ -1,12 +1,14 @@
 <template>
 	<div id="app">
 		<!-- <Header /> -->
+		<Edit />
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
 // import Header from './components/Header.vue'
+import Edit from '@/views/Manage/Edit.vue'
 export default {
 	name: 'AppName'
 	// components: { Header }

@@ -19,7 +19,7 @@
 					:value="item.id"
 					disabled
 					>{{ item.title }}</a-checkbox
-				>
+				>Alluser
 			</a-col>
 		</div>
 	</a-layout-sider>
@@ -49,10 +49,11 @@ export default {
 	background-color: white;
 	margin: 10px;
 	border-radius: 20px;
-	text-align: center;
+	text-align: left;
 	width: 100%;
 }
 .todoTitle {
 	margin: 10px 0;
+	text-align: center;
 }
 </style>

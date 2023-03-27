@@ -25,6 +25,7 @@
 							<router-link :to="`/main/articleDetail/${item.id}`">{{
 								item.title
 							}}</router-link>
+							<!-- <div @click="gotoEditArticle(item.id)">{{ item.title }}</div> -->
 							<!-- <a @click="toRecord"></a> -->
 						</template>
 					</a-list-item-meta>
@@ -92,7 +93,7 @@ export default defineComponent({
 			pageSize: 6
 		}
 		const editRecord = (id) => {
-			router.push('/authMain/operateContent/editArticle/' + id)
+			router.push({ path: '/authMain/operateContent/editArticle/' + id })
 		}
 
 		// const removeRecord = (id) => {
@@ -111,12 +112,16 @@ export default defineComponent({
 		const sendNew = () => {
 			router.push('/authMain/operateContent/editArticle')
 		}
+		const gotoEditArticle = (id) => {
+			store.dispatch('info/getCurrentArticleByIdAction', { id })
+			router.push({ path: '/main/articleDetail' })
+		}
 		return {
 			articles,
 			pagination,
 			ellipsis: ref(true),
 			editRecord,
-			// removeRecord,
+			gotoEditArticle,
 			sendNew
 		}
 	}

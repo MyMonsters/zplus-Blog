@@ -32,5 +32,6 @@ export function setupLogin() {
 	store.dispatch('login/loadLocalLogin')
 	store.dispatch('info/getTodolistAction')
 	store.dispatch('info/getTimelineAction')
+	store.dispatch('info/getAllArticlesAction')
 }
 export default store

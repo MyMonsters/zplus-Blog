@@ -6,7 +6,7 @@
 import { onMounted, watch, ref } from '@vue/runtime-core'
 import { marked } from 'marked'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/gradient-dark.css'
+import 'highlight.js/styles/github-dark.css'
 export default {
 	name: 'PreviewName',
 	props: ['value'],
@@ -25,7 +25,7 @@ export default {
 				langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
 				pedantic: false,
 				gfm: true,
-				breaks: false,
+				breaks: true,
 				sanitize: false,
 				smartypants: false,
 				xhtml: false

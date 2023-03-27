@@ -7,5 +7,6 @@ module.exports = defineConfig({
 			'@': path.resolve(__dirname, 'src'),
 			components: '@/components'
 		}
-	}
+	},
+	lintOnSave: true
 })

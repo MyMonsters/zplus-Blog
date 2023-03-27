@@ -27,9 +27,14 @@ import {
 	Timeline,
 	TimelineItem,
 	Table,
-	Divider
+	Divider,
+	TabPane,
+	Tabs,
+	Form,
+	FormItem
 } from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
+import { Link } from 'ant-design-vue/lib/anchor'
 
 const components = [
 	Button,
@@ -60,7 +65,12 @@ const components = [
 	Timeline,
 	TimelineItem,
 	Table,
-	Divider
+	Divider,
+	TabPane,
+	Tabs,
+	Form,
+	FormItem,
+	Link
 ]
 
 export default function registerElement(app) {

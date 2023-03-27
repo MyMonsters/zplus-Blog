@@ -47,16 +47,7 @@
 		</div>
 
 		<div class="content-container">
-			<a-textarea
-				v-model:value="record.content"
-				placeholder="内容"
-				:auto-size="{ minRows: 10, maxRows: 60000 }"
-				showCount
-				style="width: 47%"
-			/>
-			<div class="preview">
-				<preview :value="record.content" />
-			</div>
+			<Editor :content="record.content" />
 		</div>
 
 		<div class="btn-container">
@@ -67,20 +58,20 @@
 
 <script>
 import { UploadOutlined } from '@ant-design/icons-vue'
-import { computed, getCurrentInstance, reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import qs from 'qs'
 import { message } from 'ant-design-vue'
-import Preview from '@/components/Preview.vue'
+// import Preview from '@/components/Preview.vue'
+import Editor from '@/components/Editor.vue'
 import localCache from '@/utils/cache'
 import service from '@/service'
 import { useStore } from 'vuex'
 // import { cloneDeep } from 'lodash-es'
 export default {
-	name: 'editName',
 	components: {
 		UploadOutlined,
-		Preview
+		Editor
 	},
 	setup() {
 		const store = useStore()
@@ -89,30 +80,35 @@ export default {
 		// const editableData = reactive({})
 		const route = useRoute()
 		const router = useRouter()
-		const { proxy } = getCurrentInstance()
 		const id = ref(route.params.id)
+		debugger
 		const isEdit = id.value ? true : false
-		const record = reactive({
-			title: '',
-			content: '',
-			image: '',
-			category: '学习记录',
-			description: ''
-		})
+		const articles = store.state.info.articles
+		let record = {
+			// title: '',
+			// content: '',
+			// image: '',
+			// category: '学习记录',
+			// description: ''
+		}
 		const fileList = ref([])
 		// const htmlValue = marked(codeValue);
 		if (isEdit) {
 			// store.dispatch('info/getCurrentArticleByIdAction' , { id: id.value })
 			// editableData[id] = cloneDeep(currentArticle.value)
 			// console.log(editableData)
-			service.get('/record/getArticleById/' + id.value).then((response) => {
-				console.log(response)
-				// record = response.data
-				record.title = response.data[0].title
-				record.content = response.data[0].content
-				record.category = response.data[0].category
-				record.image = response.data[0].image
-				record.description = response.data[0].description
+			// service.get('/record/getArticleById/' + id.value).then((response) => {
+			// 	console.log(response)
+			// 	// record = response.data
+			// 	record.title = response.data[0].title
+			// 	record.content = response.data[0].content
+			// 	record.category = response.data[0].category
+			// 	record.image = response.data[0].image
+			// 	record.description = response.data[0].description
+			// })
+			record = articles.find((item) => {
+				console.log(item, id)
+				return item.id == id.value
 			})
 		}
 		const save = () => {
@@ -162,7 +158,7 @@ export default {
 				}
 			} else {
 				if (fileList.value.length !== 0) {
-					proxy.axios
+					service
 						.post(
 							'/auth/addArticle',
 							qs.stringify({
@@ -179,9 +175,9 @@ export default {
 							// if(response.data.code === 200) visible.value =true
 							console.log(response)
 							formData.append('pic', fileList.value[0].originFileObj)
-							id.value = response.data.id
+							id.value = response.id
 							formData.set('id', id.value)
-							proxy.axios
+							service
 								.post('/uploadImg', formData, {
 									headers: { Authorization: ` ${token}` }
 								})
@@ -236,11 +232,12 @@ export default {
 	height: 200px;
 }
 .content-container {
-	display: flex;
+	/* display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-between; */
 }
 .preview {
-	width: 50%;
+	width: 100%;
+	overflow: scroll;
 }
 </style>

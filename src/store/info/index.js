@@ -8,6 +8,7 @@ import {
 	removeTodo,
 	updateTimeline
 } from '@/service/info'
+import { getAllArticles } from '@/service/login'
 import { message } from 'ant-design-vue'
 const infoModule = {
 	namespaced: true,
@@ -15,7 +16,9 @@ const infoModule = {
 		return {
 			timeline: [],
 			todolist: [],
-			currentArticle: {}
+			currentArticle: {},
+			currentEditArticle: {},
+			articles: []
 		}
 	},
 	mutations: {
@@ -24,11 +27,13 @@ const infoModule = {
 		},
 		changeTodolist(state, todolist) {
 			state.todolist = todolist
-			console.log(todolist)
 		},
 		changeCurrentArticle(state, article) {
-			console.log(article)
 			state.currentArticle = article
+			console.log('changed')
+		},
+		changeAllArticles(state, articles) {
+			state.articles = articles
 		}
 	},
 	actions: {
@@ -116,6 +121,11 @@ const infoModule = {
 			getArticleById(id).then((res) => {
 				console.log(res)
 				commit('changeCurrentArticle', res.data[0])
+			})
+		},
+		getAllArticlesAction({ commit }) {
+			getAllArticles().then((res) => {
+				commit('changeAllArticles', res.data)
 			})
 		}
 	}

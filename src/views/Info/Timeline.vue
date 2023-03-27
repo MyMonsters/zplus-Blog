@@ -2,7 +2,7 @@
 	<div class="timeline-wrapper">
 		<a-timeline mode="alternate" pending="正在coding的路上">
 			<a-timeline-item
-				v-for="item of timeline"
+				v-for="item of timeline.reverse()"
 				:key="item.id"
 				:label="item.time"
 				:color="item.color"
@@ -20,6 +20,7 @@ export default {
 	setup() {
 		const store = useStore()
 		const timeline = computed(() => store.state.info.timeline)
+
 		return {
 			timeline
 		}

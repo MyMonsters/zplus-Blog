@@ -9,6 +9,7 @@
 			:to="`/main/articleDetail/${item.id}`"
 			style="height: 100%; width: 100%"
 		>
+			<!-- <div @click="gotoArticle(item.id)" style="height: 100%; width: 100%"> -->
 			<a-card hoverable class="item-container">
 				<!-- <img :src="item.image" style="width: 100%; height: 200px" /> -->
 				<template #cover>
@@ -53,8 +54,9 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 export default {
-	name: 'cardName',
 	props: {
 		list: {
 			type: Object,
@@ -62,9 +64,17 @@ export default {
 		}
 	},
 	setup() {
+		const store = useStore()
+		const router = useRouter()
 		const ellipsis = ref(true)
+		const gotoArticle = (id) => {
+			// console.log(id)
+			// store.dispatch('info/getCurrentArticleByIdAction', { id })
+			router.push({ path: '/main/articleDetail/' + id })
+		}
 		return {
-			ellipsis
+			ellipsis,
+			gotoArticle
 		}
 	}
 }

@@ -5,9 +5,10 @@
 </template>
 
 <script>
-import { reactive, ref } from '@vue/runtime-core'
+import { reactive } from '@vue/runtime-core'
 import card from '@/base-ui/card'
 import service from '@/service'
+// import EditArticle from '../Manage/EditArticle.vue'
 export default {
 	components: { card },
 	name: 'lifeName',
@@ -18,15 +19,8 @@ export default {
 			articleList.list = response.data
 		})
 
-		const changeValue = (id, item) => {
-			console.log(id, item)
-		}
-		const checked1 = ref(true)
 		return {
-			articleList,
-			ellipsis: ref(true),
-			checked1,
-			changeValue
+			articleList
 		}
 	}
 }
