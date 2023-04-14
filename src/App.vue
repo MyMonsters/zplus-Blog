@@ -31,4 +31,5 @@ export default {
 #app {
 	cursor: url('./assets/img/cursor.png'), pointer;
 }
+
 </style>

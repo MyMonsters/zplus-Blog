@@ -9,9 +9,7 @@
 			:to="`/main/articleDetail/${item.id}`"
 			style="height: 100%; width: 100%"
 		>
-			<!-- <div @click="gotoArticle(item.id)" style="height: 100%; width: 100%"> -->
 			<a-card hoverable class="item-container">
-				<!-- <img :src="item.image" style="width: 100%; height: 200px" /> -->
 				<template #cover>
 					<img
 						alt="example"
@@ -23,24 +21,11 @@
 					<a-tag color="green">{{ item.time }}</a-tag>
 					<a-tag color="green">{{ item.category }}</a-tag>
 				</div>
-				<!-- <div class="img-container">
-						<img style="width: 60%; height: 30%" :src="item.image" alt="" />
-					</div> -->
-
-				<!-- <div class="list-title"> -->
-				<!-- <a-typography-paragraph
-						:ellipsis="ellipsis ? { rows: 2 } : false"
-						:content="item.title"
-						style="text-align: left; font-size: 20px"
-						:alt="item.title"
-					/> -->
 				<a-tooltip color="#44BBA3" placement="rightBottom">
 					<template #title>{{ item.title }}</template>
 					<a-card-meta :title="item.title" style="margin-bottom: 10px">
 					</a-card-meta>
 				</a-tooltip>
-
-				<!-- </div> -->
 				<a-typography-paragraph
 					:ellipsis="ellipsis ? { rows: 3 } : false"
 					:content="item.description"
@@ -83,7 +68,7 @@ export default {
 <style scoped>
 .item-container {
 	color: #155853;
-	/* background-color: rgba(131, 216, 144, 0.212); */
+	background-color: transparent;
 	border-radius: 20px;
 	height: 100%;
 	width: 100%;
@@ -92,11 +77,12 @@ export default {
 .list-container {
 	display: flex;
 	flex-direction: column;
-	background-color: beige;
+	background-color: transparent;
 	border-radius: 20px;
 	margin-bottom: 20px;
 	align-content: stretch;
 	flex-wrap: wrap;
+	border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .list-title {
 	font-size: 24px;

@@ -1,6 +1,6 @@
 <template>
-	<!-- <a-layout id="components-layout-demo-responsive" > -->
-	<a-layout-header style="background-color: #b0cff5">
+	<!-- <a-layout id="components-layout-demo-responsive" >#b0cff5 -->
+	<a-layout-header class="header">
 		<div class="ZHeader">
 			<div class="menu-btn trigger" style="cursor: pointer" @click="showDrawer">
 				<svg
@@ -59,9 +59,9 @@
 						<code-two-tone /><span style="margin-left: 4px">PROJECTS</span>
 					</div>
 				</router-link>
-				<router-link to="/main/lifeRecord">
+				<router-link to="/main/article">
 					<div class="header-item">
-						<smile-two-tone /><span style="margin-left: 4px">LIFE</span>
+						<smile-two-tone /><span style="margin-left: 4px">ARTICLE</span>
 					</div>
 				</router-link>
 				<router-link to="/main/timeline">
@@ -109,12 +109,12 @@
 				</router-link>
 				<router-link to="/main/project">
 					<div class="menu-item">
-						<picture-two-tone /><span style="margin-left: 4px">PROJECTS</span>
+						<code-two-tone /><span style="margin-left: 4px">PROJECTS</span>
 					</div>
 				</router-link>
-				<router-link to="/main/lifeRecord">
+				<router-link to="/main/article">
 					<div class="menu-item">
-						<smile-two-tone /><span style="margin-left: 4px">LIFE</span>
+						<smile-two-tone /><span style="margin-left: 4px">ARTICLE</span>
 					</div>
 				</router-link>
 				<router-link to="/main/about">
@@ -193,8 +193,19 @@ export default {
 
 <style scoped>
 .header {
-	background-color: #fff;
+	/* background-color: #eceaec; */
+	background-image: linear-gradient(
+		to top,
+		#dad4ec 0%,
+		#dad4ec 1%,
+		#f3e7e9 100%
+	);
 	font-size: medium;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+		rgba(0, 0, 0, 0.05) 0px 5px 10px;
+
+	border-radius: 35px;
+	margin: 10px 10px;
 }
 
 .header a {
