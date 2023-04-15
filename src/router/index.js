@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import localCache from '@/utils/cache'
+
+import login from '@/views/login/Login.vue'
 const routes = [
 	{
 		path: '/',
@@ -59,9 +61,7 @@ const routes = [
 
 	{
 		path: '/login',
-		component: () => {
-			return import('../views/login/login.vue')
-		}
+		component: login
 	},
 	{
 		path: '/authMain',
