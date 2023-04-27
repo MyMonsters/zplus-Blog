@@ -54,9 +54,9 @@ export default {
 			console.log('立即登录')
 			console.log(accountRef)
 			if (activeName.value === 'account') {
-				accountRef.value?.loginAction(isKeepPassword.value)
+				accountRef.value.loginAction(isKeepPassword.value)
 			} else {
-				phoneRef.value?.loginAction(isKeepPassword.value)
+				phoneRef.value.loginAction(isKeepPassword.value)
 			}
 		}
 		return {
